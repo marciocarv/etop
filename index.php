@@ -2,16 +2,12 @@
 
 require __DIR__ . "/vendor/autoload.php";
 
-use \App\Controller\Pages\Home;
+use \App\Http\Router;
 
-$obRequest = new \App\Http\Request;
+define('URL', 'http://localhost/etop');
 
-$obResponse = new \App\Http\Response(200, 'Olá Mundo');
+$obRouter = new Router(URL);
 
-echo "<pre>";
-print_r($obResponse);
+include __DIR__ . '/routes/pages.php';
 
-echo "</pre>";
-
-exit;
-echo Home::getHome();
+$obRouter->run()->sendResponse();
